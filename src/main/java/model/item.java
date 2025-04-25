@@ -1,57 +1,56 @@
 package model;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import model.enums.Raridade;
+import model.enums.TipoItem;
+
+@Entity
 public class Item {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
     private String nome;
-    private String tipo;
-    private String raridade;
-    private double valor;
-    private String dono;
 
-    public String getNome() {
-        return nome;
-    }
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private TipoItem tipo;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private Raridade raridade;
 
-    public String getTipo() {
-        return tipo;
-    }
+    @Positive
+    private int preco;
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+    @ManyToOne
+    private Personagem dono;
 
-    public String getRaridade() {
-        return raridade;
-    }
+    // Getters e Setters
+    public Long getId() { return id; }
 
-    public void setRaridade(String raridade) {
-        this.raridade = raridade;
-    }
+    public String getNome() { return nome; }
 
-    public double getValor() {
-        return valor;
-    }
+    public void setNome(String nome) { this.nome = nome; }
 
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
+    public TipoItem getTipo() { return tipo; }
 
-    public String getDono() {
-        return dono;
-    }
+    public void setTipo(TipoItem tipo) { this.tipo = tipo; }
 
-    public void setDono(String dono) {
-        this.dono = dono;
-    }
+    public Raridade getRaridade() { return raridade; }
 
-    public Item(String nome, String tipo, String raridade, double valor, String dono) {
-        this.nome = nome;
-        this.tipo = tipo;
-        this.raridade = raridade;
-        this.valor = valor;
-        this.dono = dono;
-    }
+    public void setRaridade(Raridade raridade) { this.raridade = raridade; }
+
+    public int getPreco() { return preco; }
+
+    public void setPreco(int preco) { this.preco = preco; }
+
+    public Personagem getDono() { return dono; }
+
+    public void setDono(Personagem dono) { this.dono = dono; }
 }

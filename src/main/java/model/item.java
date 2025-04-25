@@ -1,6 +1,6 @@
 package model;
 
-public class item {
+public class Item {
     private String nome;
     private String tipo;
     private String raridade;
@@ -47,7 +47,7 @@ public class item {
         this.dono = dono;
     }
 
-    public item(String nome, String tipo, String raridade, double valor, String dono) {
+    public Item(String nome, String tipo, String raridade, double valor, String dono) {
         this.nome = nome;
         this.tipo = tipo;
         this.raridade = raridade;

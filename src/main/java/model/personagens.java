@@ -1,6 +1,6 @@
 package model;
 
-public class personagens {
+public class Personagens {
     private String nome;
     private String classe;
     private int nivel;
@@ -38,7 +38,7 @@ public class personagens {
         this.moedas = moedas;
     }
 
-    public personagens(String nome, String classe, int nivel, int moedas) {
+    public Personagens(String nome, String classe, int nivel, int moedas) {
         this.nome = nome;
         this.classe = classe;
         this.nivel = nivel;

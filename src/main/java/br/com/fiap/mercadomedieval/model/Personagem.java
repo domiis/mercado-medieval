@@ -1,12 +1,12 @@
-package model;
+package br.com.fiap.mercadomedieval.model;
 
+import br.com.fiap.mercadomedieval.model.enums.Classe;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
-import model.enums.Classe;
 
 @Entity
 public class Personagem {

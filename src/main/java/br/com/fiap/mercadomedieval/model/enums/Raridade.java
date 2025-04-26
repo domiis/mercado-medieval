@@ -1,4 +1,4 @@
-package model.enums;
+package br.com.fiap.mercadomedieval.model.enums;
 
 public enum Raridade {
     COMUM,

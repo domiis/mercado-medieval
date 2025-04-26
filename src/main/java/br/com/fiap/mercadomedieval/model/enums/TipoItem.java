@@ -1,4 +1,4 @@
-package model.enums;
+package br.com.fiap.mercadomedieval.model.enums;
 
 public enum TipoItem {
     ARMA,
@@ -6,4 +6,5 @@ public enum TipoItem {
     POCAO,
     ACESSORIO
 }
+
 

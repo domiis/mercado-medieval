@@ -1,4 +1,4 @@
-package controller;
+package br.com.fiap.mercadomedieval.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiap.mercadomedieval.model.Personagem;
+import br.com.fiap.mercadomedieval.model.enums.Classe;
+import br.com.fiap.mercadomedieval.repository.PersonagemRepository;
 import jakarta.validation.Valid;
-import model.Personagem;
-import model.enums.Classe;
-import repository.PersonagemRepository;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/personagens")
 public class PersonagemController {
-
+    
     @Autowired
     private PersonagemRepository repository;
 
@@ -61,12 +61,25 @@ public class PersonagemController {
     // Filtros
     @GetMapping("/buscar")
     public List<Personagem> buscarPorNomeOuClasse(
-            @RequestParam(required = false) String nome,
-            @RequestParam(required = false) Classe classe) {
+        @RequestParam(required = false) String nome,
+        @RequestParam(required = false) Classe classe) {
 
-        if (nome != null) return repository.findByNomeContainingIgnoreCase(nome);
-        if (classe != null) return repository.findByClasse(classe);
-
+    if (nome == null && classe == null) {
         return repository.findAll();
     }
+
+    // Por nome e classe
+    if (nome != null && classe != null) {
+        return repository.findByNomeContainingIgnoreCaseAndClasse(nome, classe);
+    }
+
+    // Por nome
+    if (nome != null) {
+        return repository.findByNomeContainingIgnoreCase(nome);
+    }
+
+    // Por classe
+    return repository.findByClasse(classe);
+}
+
 }

@@ -1,13 +1,13 @@
-package repository;
+package br.com.fiap.mercadomedieval.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import model.Item;
-import model.enums.Raridade;
-import model.enums.TipoItem;
+import br.com.fiap.mercadomedieval.model.Item;
+import br.com.fiap.mercadomedieval.model.enums.Raridade;
+import br.com.fiap.mercadomedieval.model.enums.TipoItem;
 
 public interface ItemRepository extends JpaRepository<Item, Long>, JpaSpecificationExecutor<Item> {
     List<Item> findByNomeContainingIgnoreCase(String nome);
